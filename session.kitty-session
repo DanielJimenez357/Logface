@@ -1,0 +1,7 @@
+new_tab Dev Environment
+layout splits
+cd .
+
+launch bash -c "source ./venv/bin/activate && nvim"
+
+launch bash -c "source ./venv/bin/activate && python3 ./logface/manage.py runserver"
