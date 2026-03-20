@@ -13,3 +13,8 @@ export const obtenerUsuarios = async (id_usuario=null) => {
   await console.log(response.data)
   return response.data
 }
+
+export const crearUsuario = async (datos) => {
+  const response = await apiDjango.post('usuarios/', datos)
+  return response.data
+}
