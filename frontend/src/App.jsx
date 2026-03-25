@@ -1,19 +1,14 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import { crearUsuario, obtenerUsuarios } from './services/api.js'
+import { Routes, Route } from 'react-router-dom'
+import Layout from './components/main/Layout.jsx'
+import Dashboard from './components/dashboard/Dashboard.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return(
-  <>
-    <div className="bg-red-500">Hola</div>
-    <button onClick={() => obtenerUsuarios()}>Hola</button>
-
-
-    <button onClick={() => crearUsuario()}>Crear usuario</button>
-
-    </>
+  <Routes>
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Dashboard />} />
+    </Route>
+    </Routes>
   ) 
 }
 
