@@ -1,5 +1,5 @@
 import Ticket_Response from './Ticket_Response.jsx'
-function Ticket({ticket_content}) {
+function Ticket_Resolved({ticket_content}) {
   return (
   <>
     <div>
@@ -12,4 +12,4 @@ function Ticket({ticket_content}) {
   )
 }
 
-export default Ticket
+export default Ticket_Resolved

@@ -1,11 +1,15 @@
-import Ticket from './Ticket.jsx'
+import Ticket_Unresolved from './Ticket_Unresolved.jsx'
+import Ticket_Resolved from './Ticket_Resolved.jsx'
+import {Outlet} from 'react-router-dom'
+
+
 
 function Ticket_Panel() {
  return (
  <>
    <div className="bg-white w-full h-9/10 border p-4 border-negro1 rounded-lg" >
-      <Ticket ticket_content="He tenido un problema con la contraseña, se me ha olvidado cual era." />
-    </div> 
+    <Outlet />
+      </div>
     </>
  ) 
 }
