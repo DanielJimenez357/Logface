@@ -4,7 +4,7 @@ import Dashboard from './components/dashboard/Dashboard.jsx'
 import Ticket_System from './components/ticket_system/Ticket_System.jsx'
 import Ticket_Unresolved from './components/ticket_system/Ticket_Unresolved.jsx'
 import Ticket_Resolved from './components/ticket_system/Ticket_Resolved.jsx'
-
+import Calendar from './components/calendar/Calendar.jsx'
 
 function App() {
   return(
@@ -15,6 +15,7 @@ function App() {
           <Route index element={<Ticket_Unresolved/>} />
           <Route path="resueltos" element={<Ticket_Resolved/>} />
       </Route>
+      <Route path="calendar" element={<Calendar />} />
     </Route>
     </Routes>
   ) 
