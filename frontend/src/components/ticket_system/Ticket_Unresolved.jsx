@@ -1,11 +1,11 @@
 import Ticket_Response from './Ticket_Response.jsx'
-function Ticket_Unresolved({ticket_content}) {
+function Ticket_Unresolved() {
   return (
   <>
     <div >
-        <p>{ticket_content}</p>
+        <p>{}</p>
       <div>
-       <Ticket_Response response_content =" Prueba de ticket resuelto"/>
+       <Ticket_Response response_content =" Prueba de ticket sin resolver"/>
       </div>
     </div>
     </>

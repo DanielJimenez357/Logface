@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 function Ticket_System() {
 
   const TabStyles = ({isActive}) => 
-    `transition-colors p-3 border text-center w-[50%] border-negro1  rounded-b-lg ${isActive ? 'bg-rojo1' : 'bg-white'} `
+    `transition-colors p-3 border text-center w-[50%] border-negro1  rounded-b-lg ${isActive ? 'hover:bg-rojo2 bg-rojo1 text-white active:text-black active:bg-white' : 'hover:bg-gris1 bg-white active:bg-gris2'} `
 
   return (
   <>
@@ -14,8 +14,8 @@ function Ticket_System() {
       </div>
     <div className="w-11/12 h-11/12 mt-1 flex flex-col justify-end items-center">
         <div className="flex flex-row h-10 items-end">
-          <p>Lista de incidencias por resolver</p>
-         <p className="absolute right-40 border border-negro1 bg-gris2 hover:bg-gris1 hover:cursor-pointer active:bg-white transition-colors p-2 rounded-t-lg">Crear nueva incidencia</p> 
+          <p>Lista de incidencias</p>
+         <p className="absolute right-40 border text-white hover:text-black border-negro1 bg-gris2 hover:bg-gris1 hover:cursor-pointer active:bg-white transition-colors p-2 rounded-t-lg">Crear nueva incidencia</p> 
         </div>
         <Ticket_Panel />
     </div>
