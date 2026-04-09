@@ -10,7 +10,7 @@ function Navbar() {
       <Link_Header link_name="Incidencias" route="incidencias"  /> 
       <Link_Header link_name="Zona managers" /> 
       <Link_Header link_name="Perfil" />
-      <Link_Header link_name="Departamento" /> 
+      <Link_Header link_name="Departamento" route="department" /> 
       <Link_Header link_name="Cerrar sesion" /> 
       </div>
     </>

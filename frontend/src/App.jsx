@@ -5,6 +5,7 @@ import Ticket_System from './components/ticket_system/Ticket_System.jsx'
 import Ticket_Unresolved from './components/ticket_system/Ticket_Unresolved.jsx'
 import Ticket_Resolved from './components/ticket_system/Ticket_Resolved.jsx'
 import Calendar from './components/calendar/Calendar.jsx'
+import Task_Set from './components/department/Task_Set.jsx'
 
 function App() {
   return(
@@ -16,6 +17,7 @@ function App() {
           <Route path="resueltos" element={<Ticket_Resolved/>} />
       </Route>
       <Route path="calendar" element={<Calendar />} />
+      <Route path="department" element={<Task_Set />} />
     </Route>
     </Routes>
   ) 
