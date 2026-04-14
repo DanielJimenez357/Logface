@@ -1,7 +1,7 @@
-function Task({content}) {
+function Task({content, description}) {
   return (
   <>
-    <div>
+    <div className="p-1 border border-negro1">
       <p>{content}</p>
     </div>
     </>
