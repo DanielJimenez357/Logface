@@ -7,9 +7,11 @@ function Task_Activity({title}) {
     {content: "segunda tarea" , description: "segund prueba de descripcion"}
   ]
 
+
+
   return (
   <>
-    <div className="border border-negro1 rounded-b-md rounded-t-lg bg-white overflow-hidden w-9/30">
+    <div className="border border-negro1 rounded-b-md rounded-t-lg bg-white overflow-hidden w-9/30 shadow shadow-gris2">
       <p className="bg-gris2 text-white border-b border-negro1 text-2xl text-center">{title}</p>
         <div>
           {task_test.map((item, index) => (

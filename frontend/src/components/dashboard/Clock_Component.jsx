@@ -16,8 +16,8 @@ function Clock_Component() {
 
   return (
   <>
-      <div className=" flex absolute w-full right-5 top-5 justify-end ">
-        <Clock size="8vw" value={value} className="absolute" />
+      <div className=" flex absolute w-full right-5 top-5 justify-end">
+        <Clock size="8vw" value={value} className="absolute " />
       </div>
     </>
   )

@@ -7,7 +7,7 @@ import {Outlet} from 'react-router-dom'
 function Ticket_Panel() {
  return (
  <>
-   <div className="bg-white w-full h-9/10 border p-4 border-negro1 rounded-lg" >
+   <div className="bg-white w-full h-9/10 border p-4 border-negro1 rounded-lg shadow shadow-gris2" >
     <Outlet />
       </div>
     </>

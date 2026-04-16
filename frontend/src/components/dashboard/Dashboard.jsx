@@ -14,11 +14,11 @@ function Dashboard() {
         <Week_Resume className="col-span-1" />
           <div className="w-8/10 flex flex-col  h-10/12 justify-between ">
             <Delay_Minutes minutos="5" />
-            <div className="h-2/8 bg-white flex flex-col justify-around rounded-lg p-3 border border-negro1 ">
+            <div className="h-2/8 bg-white flex flex-col justify-around rounded-lg p-3 border border-negro1 shadow shadow-gris2">
               <Hours_Week number_hours="20" color="black"/>
               <Hours_Week number_hours="3" color="red" />   
             </div>
-            <div className="h-4/8 bg-white border border-negro1 rounded-lg">
+            <div className="h-4/8 bg-white border border-negro1 rounded-lg shadow shadow-gris2">
              <p className="w-full flex justify-center border-b-2 border-negro1">Tickets sin resolver</p> 
               <Ticket_Resume />
             </div>

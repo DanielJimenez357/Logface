@@ -37,7 +37,7 @@ function Calendar() {
   <>
     <div className=" w-full h-9/10">
       <p className="w-full text-center">Calendario de este mes</p>
-        <div className="bg-white rounded-t-lg border border-negro1 h-full w-full">
+        <div className="bg-white rounded-t-lg border border-negro1 h-full w-full shadow shadow-gris2">
           <div className="grid grid-cols-7 text-center border-b h-[5%] border-negro1">
             <p>Lunes</p>
             <p>Martes</p>
