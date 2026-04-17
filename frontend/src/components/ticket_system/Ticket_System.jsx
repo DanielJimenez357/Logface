@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 function Ticket_System() {
 
-  const [showForm, setshowForm ] = useState(false)
+  const [showForm, setShowForm ] = useState(false)
 
   const TabStyles = ({isActive}) => 
     `transition-colors p-3 border text-center w-[50%] border-negro1  shadow shadow-gris2 rounded-b-lg ${isActive ? 'hover:bg-rojo2 bg-rojo1 text-white active:text-black active:bg-white' : 'hover:bg-gris1 bg-white active:bg-gris2'} `

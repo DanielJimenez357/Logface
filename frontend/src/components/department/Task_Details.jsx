@@ -4,10 +4,11 @@ import { CgProfile } from "react-icons/cg";
 function Task_Details({show, onClose}) {
   return (
   <>
-    <div className="bg-white w-[17.5%] h-full rounded-e-lg border-negro1 border absolute top-0 right-full flex flex-col  ">
+    <div className={`bg-white w-[17.5%] pl-1 pr-1 h-full rounded-e-lg border-negro1 border absolute top-0 transition-all duration-600 flex flex-col right-full ${show ? "translate-x-0" : "-translate-x-[105%]"}  `}>
+
       <div className="flex flex-row relative justify-center text-center border-b border-negro1">
         <p className="w-6/12">Asesoramiento cliente nº3</p>
-          <FiX className="text-3xl right-0  absolute hover:scale-125 transition-all hover:cursor-pointer" />
+          <FiX onClick={onClose} className="text-3xl right-0  absolute hover:scale-125 transition-all hover:cursor-pointer" />
       </div>
         <div className="pt-5 pb-5">
           <p>Compañeros: </p>

@@ -1,6 +1,6 @@
 import Task from './Task.jsx'
 
-function Task_Activity({title}) {
+function Task_Activity({title, onTaskClick}) {
 
   const task_test = [
     {content: "prueba", description: "una descripcion de prueba"},
@@ -15,7 +15,7 @@ function Task_Activity({title}) {
       <p className="bg-gris2 text-white border-b border-negro1 text-2xl text-center">{title}</p>
         <div>
           {task_test.map((item, index) => (
-            <Task content={item.content} description={item.description} />
+            <Task content={item.content} description={item.description} onClick={onTaskClick} />
           ))}
         </div>
     </div>
