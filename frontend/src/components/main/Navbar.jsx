@@ -9,7 +9,7 @@ function Navbar() {
       <Link_Header link_name="Calendario" route="calendar" /> 
       <Link_Header link_name="Incidencias" route="incidencias"  /> 
       <Link_Header link_name="Zona managers" /> 
-      <Link_Header link_name="Perfil" />
+      <Link_Header link_name="Perfil" route="profile"/>
       <Link_Header link_name="Departamento" route="department" /> 
       <Link_Header link_name="Cerrar sesion" /> 
       </div>
