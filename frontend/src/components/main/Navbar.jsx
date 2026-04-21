@@ -11,7 +11,7 @@ function Navbar() {
       <Link_Header link_name="Zona managers" route="managers_zone" /> 
       <Link_Header link_name="Perfil" route="profile"/>
       <Link_Header link_name="Departamento" route="department" /> 
-      <Link_Header link_name="Cerrar sesion" /> 
+      <Link_Header link_name="Cerrar sesion" route="login" /> 
       </div>
     </>
   )

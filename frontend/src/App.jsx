@@ -8,6 +8,8 @@ import Calendar from './components/calendar/Calendar.jsx'
 import Task_Set from './components/department/Task_Set.jsx'
 import Profile from './components/profile/Profile.jsx'
 import Managers_Zone from './components/managers_zone/Managers_Zone.jsx'
+import Login from './components/login/Login.jsx'
+
 
 function App() {
   return(
@@ -23,6 +25,8 @@ function App() {
       <Route path="calendar" element={<Calendar />} />
       <Route path="department" element={<Task_Set />} />
     </Route>
+       <Route path="login" element={<Login />} />
+
     </Routes>
   ) 
 }
