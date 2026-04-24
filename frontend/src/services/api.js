@@ -68,7 +68,6 @@ apiDjango.interceptors.response.use(
 export const obtenerUsuarios = async (id_usuario=null) => {
   const url = id_usuario ? `usuarios/${id_usuario}/` : 'usuarios/';
   const response = await apiDjango.get(url);
-  await console.log(response.data)
   return response.data
 }
 

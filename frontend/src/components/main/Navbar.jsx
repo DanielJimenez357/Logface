@@ -2,6 +2,11 @@ import Link_Header from './Link_Header.jsx'
 
 
 function Navbar() {
+
+  const log_out = () => {
+    localStorage.clear()
+  }
+
   return (
   <>
     <div className="bg-gris1 flex  flex-col w-1/8 mr-2  rounded-r-lg  h-[70%] shadow shadow-gris2">
@@ -11,7 +16,7 @@ function Navbar() {
       <Link_Header link_name="Zona managers" route="managers_zone" /> 
       <Link_Header link_name="Perfil" route="profile"/>
       <Link_Header link_name="Departamento" route="department" /> 
-      <Link_Header link_name="Cerrar sesion" route="login" /> 
+      <Link_Header onClick={log_out} link_name="Cerrar sesion" route="login" /> 
       </div>
     </>
   )

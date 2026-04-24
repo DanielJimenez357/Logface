@@ -9,12 +9,16 @@ import Task_Set from './components/department/Task_Set.jsx'
 import Profile from './components/profile/Profile.jsx'
 import Managers_Zone from './components/managers_zone/Managers_Zone.jsx'
 import Login from './components/login/Login.jsx'
+import Protected_Route from './services/protected_route.jsx'
 
 
 function App() {
   return(
   <Routes>
-    <Route path="/" element={<Layout />}>
+    <Route path="/" element={
+        <Protected_Route>
+          <Layout />
+        </Protected_Route>}>
       <Route index element={<Dashboard />} />
       <Route path="incidencias" element={<Ticket_System/>} >
           <Route index element={<Ticket_Unresolved/>} />
