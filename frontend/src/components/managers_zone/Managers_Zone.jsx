@@ -2,11 +2,12 @@ import List from './List.jsx'
 import Departments from './Departments.jsx'
 import Button from '../main/Button.jsx'
 import General_Form from './General_Form.jsx'
+import {ENDPOINTS} from '../../services/endpoints.js'
 
 function Manager_Zone() {
 
 const form_list = {
-    employee: {fields:[["nombre", "text"], ["apellidos", "text"], ["numero de telefono", "text"], ["contraseña" ,"password"], ["email", "email"]], url:""},
+    employee: {fields:[["nombre", "text"], ["apellidos", "text"], ["numero de telefono", "text"], ["contraseña" ,"password"], ["email", "email"]], url:ENDPOINTS.REGISTER_LDAP},
     task: {fields:{}, url:""},
     department: {fields:{}, url:""},
     time_span: {fields:{}, url:""},
@@ -24,7 +25,7 @@ const datosDePrueba = [
   <>
       <div className="flex flex-row w-full h-full justify-around items-center">
         <div>
-          <General_Form fields={form_list.employee.fields} visible={true}/>
+          <General_Form fields={form_list.employee.fields} url={form_list.employee.url} visible={true}/>
         </div>
        <div className="flex flex-col h-8/10 w-2/10">
          <List title="Empleados" content_list={datosDePrueba} />

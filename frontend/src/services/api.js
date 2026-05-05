@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import {ENDPOINTS} from './endpoints.js'
 //Instancia de axios "apiDjango" maneja las peticiones a django
 const apiDjango = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/`, //url base
@@ -26,7 +26,7 @@ apiDjango.interceptors.request.use(
 
 
 
-//Intercepto de apiDjango, refresca el token de seguridad en caso de que haya caducado
+//Interceptor de apiDjango, refresca el token de seguridad en caso de que haya caducado
 apiDjango.interceptors.response.use(
   //si esta todo bien, no hace nada (response 200)
   (response) => {
@@ -43,7 +43,7 @@ apiDjango.interceptors.response.use(
               const refreshToken = localStorage.getItem('refresh_token');
               const base_url = import.meta.env.VITE_API_URL;
               //hacemos una peticion a django con el "refresh_token" para que nos de un nuevo token de seguridad
-              const response = await axios.post(`${base_url}/api/token/refresh/`, {
+              const response = await axios.post(`${base_url}+ ${ENDPOINTS.REFRESH}`, {
                   refresh: refreshToken
               });
               //actualizamos el token de seguridad
