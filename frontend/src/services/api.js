@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {ENDPOINTS} from './endpoints.js'
 //Instancia de axios "apiDjango" maneja las peticiones a django
-const apiDjango = axios.create({
+export const apiDjango = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/`, //url base
   headers: {
     'Content-Type': 'application/json'

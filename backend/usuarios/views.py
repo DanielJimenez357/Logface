@@ -21,6 +21,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
 class LDAPRegister(APIView):
     # actuaa ante una peticion post
     def post(self, request):
+        print(request.data)
         # recogemos los datos de la peticion
         data = request.data
         username = data.get("username")
