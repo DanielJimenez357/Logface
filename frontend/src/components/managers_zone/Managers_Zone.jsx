@@ -7,7 +7,7 @@ import {ENDPOINTS} from '../../services/endpoints.js'
 function Manager_Zone() {
 
 const form_list = {
-    employee: {fields:[["nombre", "text"], ["apellidos", "text"], ["numero de telefono", "text"], ["contraseña" ,"password"], ["email", "email"]], url:ENDPOINTS.REGISTER_LDAP},
+    employee: {fields:[["first_name", "text"], ["last_name", "text"], ["username", "text"], ["phone_number", "text"], ["password" ,"password"], ["email", "email"]], url:ENDPOINTS.REGISTER_LDAP},
     task: {fields:{}, url:""},
     department: {fields:{}, url:""},
     time_span: {fields:{}, url:""},

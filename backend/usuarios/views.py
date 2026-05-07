@@ -29,7 +29,6 @@ class LDAPRegister(APIView):
         email = data.get("email")
         name = data.get("first_name")
         last_name = data.get("last_name")
-
         # registramos al usuario en le servidor
         ldap_succes = ldap_register(username, password, email, name, last_name)
 

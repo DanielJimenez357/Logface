@@ -10,7 +10,13 @@ def ldap_register(username, password, email, name, last_name):
     admin_password = os.getenv("LDAP_BIND_PASSWORD")
     search_base = os.getenv("LDAP_SEARCH_BASE")
 
+    print(server_uri)
+
     try:
+        print("aqui en services")
+        print(admin_dn)
+        print(admin_password)
+        print(search_base)
         # nos conectamos al servidor como administrador
         server = Server(server_uri, get_info=ALL)
         connection = Connection(
