@@ -33,6 +33,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    path("home/", include(router.urls), name="home"),
+    path("api/", include(router.urls), name="home"),
     path("api/register/", vistas_usuario.LDAPRegister.as_view(), name="ldap_register"),
+    path("api/profile/", vistas_usuario.Profile.as_view(), name="profile"),
 ]
