@@ -1,14 +1,19 @@
 import { createContext, useState, useEffect} from 'react'
 import apiDjango from '../services/api.js'
 
-const AuthContext = createContext()
+export const AuthContext = createContext()
 
-function const AuthProvider = ({children}) {
+const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [reload, setReload] = useState(false)
 
   useEffect(()=> {
   const loadProfile = async () => {
-    const token = localStorage.getItem('acces_token')
+  
+    setLoading(true)
+
+    const token = localStorage.getItem('access_token')
     if (token) {
       try{
         const response = await apiDjango.get('/api/profile')
@@ -19,16 +24,20 @@ function const AuthProvider = ({children}) {
         setUser(null)
       }
     }
+      else {
+        setUser(null)
+      }
+    setLoading(false)
   }
   loadProfile()
-}, [])
-}
+}, [reload])
 
 
   return(
-  <AuthContext.Provider value={{user, setUser}}>
+  <AuthContext.Provider value={{user, setUser, loading, reload, setReload}}>
     {children}
   </AuthContext.Provider>
   )
-  
 }
+
+export default AuthProvider

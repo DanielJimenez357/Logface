@@ -3,10 +3,11 @@ from django.http import JsonResponse
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from backend.services.ldap_service import ldap_register
 from .models import Usuario
-from .serializers import UsuarioSerializer
+from .serializers import UserProfile, UsuarioSerializer
 import os, json, requests
 
 # Create your views here.
@@ -51,3 +52,13 @@ class LDAPRegister(APIView):
             {"error": "No se pudo registrar en LDAP"},
             status=status.HTTP_400_BAD_REQUEST,
         )
+
+
+class Profile(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        serializer = UserProfile(user)
+        print(serializer.data)
+        return Response(serializer.data)

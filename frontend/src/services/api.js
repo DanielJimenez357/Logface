@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {ENDPOINTS} from './endpoints.js'
 //Instancia de axios "apiDjango" maneja las peticiones a django
-export const apiDjango = axios.create({
+const apiDjango = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/`, //url base
   headers: {
     'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ apiDjango.interceptors.response.use(
               const refreshToken = localStorage.getItem('refresh_token');
               const base_url = import.meta.env.VITE_API_URL;
               //hacemos una peticion a django con el "refresh_token" para que nos de un nuevo token de seguridad
-              const response = await axios.post(`${base_url}+ ${ENDPOINTS.REFRESH}`, {
+              const response = await axios.post(`${base_url}${ENDPOINTS.REFRESH}`, {
                   refresh: refreshToken
               });
               //actualizamos el token de seguridad
@@ -65,13 +65,5 @@ apiDjango.interceptors.response.use(
   }
 );
 
-export const obtenerUsuarios = async (id_usuario=null) => {
-  const url = id_usuario ? `usuarios/${id_usuario}/` : 'usuarios/';
-  const response = await apiDjango.get(url);
-  return response.data
-}
 
-export const crearUsuario = async (datos) => {
-  const response = await apiDjango.post('usuarios/', datos)
-  return response.data
-}
+export default apiDjango

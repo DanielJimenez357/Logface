@@ -10,11 +10,12 @@ import Profile from './components/profile/Profile.jsx'
 import Managers_Zone from './components/managers_zone/Managers_Zone.jsx'
 import Login from './components/login/Login.jsx'
 import Protected_Route from './services/protected_route.jsx'
-
+import AuthProvider from './context/Auth_Context.jsx'
 
 function App() {
   return(
-  <Routes>
+    <AuthProvider>
+    <Routes>
     <Route path="/" element={
         <Protected_Route>
           <Layout />
@@ -32,6 +33,8 @@ function App() {
        <Route path="login" element={<Login />} />
 
     </Routes>
+    </AuthProvider>
+
   ) 
 }
 

@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {motion, AnimatePresence} from 'framer-motion'
 import Pills_Loader from '../loading/Pills_Loader.jsx'
+import { AuthContext } from '../../context/Auth_Context.jsx'
+import { useContext } from 'react'
 
 function Login() {
 
@@ -11,6 +13,8 @@ function Login() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+
+  const { setReload } = useContext(AuthContext)
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -38,6 +42,7 @@ function Login() {
       localStorage.setItem('access_token', data.access)
       localStorage.setItem('refresh_token', data.refresh)
       console.log("Login correcto")
+      setReload(reload=> !reload)
       navigate('/')
     }
     else {

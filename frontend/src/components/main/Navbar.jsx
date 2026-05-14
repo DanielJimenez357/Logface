@@ -1,7 +1,10 @@
 import Link_Header from './Link_Header.jsx'
-
+import {AuthContext} from '../../context/Auth_Context.jsx'
+import { useContext } from 'react'
 
 function Navbar() {
+
+  const { setUser } = useContext(AuthContext)
 
   const log_out = () => {
     localStorage.clear()

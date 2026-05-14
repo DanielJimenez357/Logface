@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { createRoot } from 'react-dom/client' 
-import { apiDjango } from '../../services/api.js'
+import  apiDjango from '../../services/api.js'
 
 
 function General_Form({fields, url, visible}) {
@@ -23,8 +23,7 @@ function General_Form({fields, url, visible}) {
   return(
     <>
       { visible &&
-        <div className="flex flex-col items-center">
-          <p>{JSON.stringify(formData, null, 2)}</p>
+        <div className="flex flex-col absolute left-[50%] right-[50%] top-[20%] items-center">
         <p>"pegatina"</p>  
       <form onSubmit={handleSubmit} className={'bg-white flex flex-col p-5 rounded-lg '}>
     {Object.entries(fields).map(([key, field])=> (
