@@ -9,13 +9,15 @@ import Create_Button from './Create_Button.jsx'
 function Manager_Zone() {
 
   const [active, setActive] = useState(false)
+  const [fields, setFields] = useState([])
+  const [url, setUrl] = useState("")
 
 const form_list = {
     employee: {fields:[["first_name", "text"], ["last_name", "text"], ["username", "text"], ["phone_number", "text"], ["password" ,"password"], ["email", "email"]], url:ENDPOINTS.REGISTER_LDAP},
-    task: {fields:{}, url:""},
-    department: {fields:{}, url:""},
-    time_span: {fields:{}, url:""},
-    holiday: {fields:{}, url:""}
+    task: {fields:[["departamento", "text"], ["nombre", "text"], ["implicados", "text"], ["descripcion", "text"]], url:""},
+    department: {fields:[["nombre", "text"]], url:ENDPOINTS.DEPARTMENT},
+    time_span: {fields:[["horario", "text"], ["hora_entrada", "time"], ["hora_salida", "time"]], url:""},
+    holiday: {fields:[["day", "date"]], url:""}
   }
 
 
@@ -30,23 +32,23 @@ const datosDePrueba = [
       <div className="flex flex-row w-full h-full justify-around items-center">
         <div onClick={()=> setActive(false)} className={`${active ? "backdrop-blur-xs bg-black/40 rounded-lg absolute w-full h-full" :"hidden"}  transition-all"`}>
           <div onClick={(e) => e.stopPropagation()}>
-            <General_Form fields={form_list.employee.fields} url={form_list.employee.url} visible={true}/>
+            <General_Form fields={fields} url={url} visible={true}/>
           </div>
         </div>
        <div className="flex flex-col h-8/10 w-2/10">
          <List title="Empleados" content_list={datosDePrueba} />
-        <Create_Button  onClick={()=> setActive(true)} content="Registrar nuevo empleado"/>
+        <Create_Button  onClick={()=> {setActive(true); setFields(form_list.employee.fields); setUrl(form_list.employee.url)}} content="Registrar nuevo empleado"/>
         </div> 
         <div className="flex flex-col h-8/10 w-2/10">
           <List title="Tareas" content_list={datosDePrueba}/>
-          <Create_Button  onClick={()=> setActive(true)} content="Crear nueva tarea" />
+          <Create_Button  onClick={()=> {setActive(true); setFields(form_list.task.fields); setUrl(form_list.task.url)}} content="Crear nueva tarea" />
         </div>
         <div className="flex flex-col h-8/10 w-2/10 items-center">
           <Departments />
           <div className="h-7/20 flex flex-col justify-between">            
-          <Create_Button onClick={()=> setActive(true)} content="Crear nuevo departamento" />
-          <Create_Button  onClick={()=> setActive(true)} content="Crear nuevo horario" />
-          <Create_Button  onClick={()=> setActive(true)} content="Designar festivo" />
+          <Create_Button onClick={()=> {setActive(true); setFields(form_list.department.fields); setUrl(form_list.department.url)}} content="Crear nuevo departamento" />
+          <Create_Button  onClick={()=> {setActive(true); setFields(form_list.time_span.fields); setUrl(form_list.time_span.url)}} content="Crear nuevo horario" />
+          <Create_Button  onClick={()=> {setActive(true); setFields(form_list.holiday.fields); setUrl(form_list.holiday.url)}} content="Designar festivo" />
           </div>
         </div>
       </div>
