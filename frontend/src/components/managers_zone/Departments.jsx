@@ -6,6 +6,8 @@ import { ENDPOINTS } from '../../services/endpoints.js'
 function Departments() {
 
   const [departments, setDerpartments] = useState([])
+  const [loading_department, setLoading_department] = useState(false)
+
 
   useEffect(()=> {
     const fetchDepartments = async () => {
@@ -30,7 +32,7 @@ function Departments() {
       <div>
         {
             departments.map((element, key) =>(
-            <List_Component content={element.nombre} />
+            <List_Component content={element.nombre} id={element.id} />
             ))
           }
       </div>

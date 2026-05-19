@@ -1,21 +1,30 @@
 import { NavLink } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 function Link_Header({link_name, route, onClick}) {
 
   const linkStyle = ({ isActive }) => {
 
-    const styles = "hover:text-white hover:cursor-pointer border border-negro1 rounded-r-xl p-1.5 hover:-translate-x-25 w-[150%] text-end transition-all -translate-x-30  "
+    const styles = "transition-all "
      return isActive 
-      ? `${styles} bg-rojo1 text-white hover:bg-rojo2 `
-      : `${styles} bg-white text-negro1 hover:bg-gris2 `
+      ? `${styles}text-white hover:bg-rojo2 `
+      : `${styles}text-negro1 hover:bg-gris2 `
    }
 
   return (
   <>
-    <NavLink to={`/${route}`} className={linkStyle} >
-      <p onClick={onClick}>{link_name}</p>
-    </NavLink>
-
+      <motion.div
+      whileHover={{
+          x: 20,
+          transition: {type: "spring", stiffness: 300, damping: 20}
+        }}
+      whileTap={{ scale: .95}}
+        className="w-full"
+      >
+        <NavLink to={`/${route}`} className={linkStyle} >
+          <p className="bg-rojo2 hover:cursor-pointer rounded-xl p-3  w-full" onClick={onClick}>{link_name}</p>
+        </NavLink>
+      </motion.div>
     </>
   )
 }
