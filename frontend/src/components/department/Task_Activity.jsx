@@ -1,5 +1,4 @@
 import Task from './Task.jsx'
-
 function Task_Activity({title, onTaskClick}) {
 
   const task_test = [
