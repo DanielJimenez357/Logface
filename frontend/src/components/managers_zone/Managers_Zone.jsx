@@ -18,11 +18,17 @@ function Manager_Zone() {
   const [loading_employee, setLoading_employee] = useState(false)
   const [loading_tasks, setLoading_tasks] = useState(false)
   const [activeForm, setActiveform] = useState(null)
+  const [department, setDepartment] = useState(1)
 
+
+  console.log("departamento es: " +department)
   const fetchEmployee = async ()=>{
           try {
+
+              const url = `${ENDPOINTS.EMPLOYEE}?departamento=${department}`
+
               setLoading_employee(true)
-              const response = await apiDjango.get(ENDPOINTS.EMPLOYEE)
+              const response = await apiDjango.get(url)
               console.log(response.data)
               setEmployees(response.data)
               /*if (response.data == [])
@@ -38,8 +44,9 @@ function Manager_Zone() {
 
   const fetchTask = async ()=>{
           try {
+               const url = `${ENDPOINTS.TASK}?departamento=${department}`
               setLoading_tasks(true)
-              const response = await apiDjango.get(ENDPOINTS.TASK)
+              const response = await apiDjango.get(url)
               console.log(response.data)
               setTasks(response.data)
              /* if (response.data == [])
@@ -62,8 +69,8 @@ function Manager_Zone() {
 
   }
 
-  useEffect(()=> {fetchEmployee()}, [])
-  useEffect(()=> {fetchTask()}, [])
+  useEffect(()=> {fetchEmployee()}, [department])
+  useEffect(()=> {fetchTask()}, [department])
 
 
 
@@ -98,7 +105,7 @@ const form_list = {
           <Create_Button  onClick={()=> {setActiveform('task')}} content="Crear nueva tarea" />
         </div>
         <div className="flex flex-col h-8/10 w-2/10 items-center">
-          <Departments />
+          <Departments setDepartment={setDepartment} />
           <div className="h-7/20 flex flex-col justify-between">            
             <Create_Button onClick={()=> {setActive(true); setFields(form_list.department.fields); setUrl(form_list.department.url)}} content="Crear nuevo departamento" />
             <Create_Button  onClick={()=> {setActive(true); setFields(form_list.time_span.fields); setUrl(form_list.time_span.url)}} content="Crear nuevo horario" />

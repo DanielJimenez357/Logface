@@ -3,7 +3,7 @@ import  apiDjango from '../../services/api.js'
 import { useState, useEffect } from 'react'
 import { ENDPOINTS } from '../../services/endpoints.js'
 
-function Departments() {
+function Departments({setDepartment}) {
 
   const [departments, setDerpartments] = useState([])
   const [loading_department, setLoading_department] = useState(false)
@@ -32,7 +32,7 @@ function Departments() {
       <div>
         {
             departments.map((element, key) =>(
-            <List_Component content={element.nombre} id={element.id} />
+            <List_Component setDepartment={setDepartment} content={element.nombre} id={element.id} />
             ))
           }
       </div>
