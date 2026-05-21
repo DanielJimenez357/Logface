@@ -3,6 +3,9 @@ from .models import Tarea, Departamento
 
 
 class TareaSerializer(serializers.ModelSerializer):
+    department_name = serializers.ReadOnlyField(source="departamento.nombre")
+    implicated_names = serializers.StringRelatedField(many=True, source="implicados")
+
     class Meta:
         model = Tarea
         fields = "__all__"

@@ -6,10 +6,12 @@ from .models import Usuario
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = "__all__"
+        fields = ["id", "username"]
 
 
 class UserProfile(serializers.ModelSerializer):
+    department_name = serializers.ReadOnlyField(source="departamento.nombre")
+
     class Meta:
         model = Usuario
         fields = [
@@ -20,4 +22,5 @@ class UserProfile(serializers.ModelSerializer):
             "last_name",
             "role",
             "departamento",
+            "department_name",
         ]

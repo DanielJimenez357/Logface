@@ -1,7 +1,7 @@
 import {FiX} from "react-icons/fi"
 import { CgProfile } from "react-icons/cg";
 
-function Task_Details({show, onClose}) {
+function Task_Details({description, implicated, show, onClose}) {
   return (
   <>
     <div className={`bg-white w-[17.5%] pl-1 pr-1 h-full rounded-e-lg border-negro1 border absolute top-0 transition-all duration-600 flex flex-col right-full ${show ? "translate-x-0" : "-translate-x-[105%]"}  `}>
@@ -13,16 +13,15 @@ function Task_Details({show, onClose}) {
         <div className="pt-5 pb-5">
           <p>Compañeros: </p>
           <div className="flex flex-row">
-          <CgProfile />
-          <CgProfile />
-          <CgProfile />
-          <CgProfile />
-          <CgProfile />
+          {/*<CgProfile /> */}
+            {implicated.map((item, key)=>{
+             return <p>{item}</p>
+            })}
           </div>
         </div>
         <div  className="pt-2 pb-5">
           <p>Descripcion:</p>
-          <p className="border-negro1 border bg-gris1 rounded-lg" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua. </p>
+          <p className="border-negro1 border bg-gris1 rounded-lg" >{description}</p>
         </div>
         <div  className="pt-2 pb-2">
           <p>Fecha limite estimada:  </p>
