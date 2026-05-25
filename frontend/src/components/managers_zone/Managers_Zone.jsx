@@ -76,8 +76,8 @@ function Manager_Zone() {
 
   
 const form_list = {
-    employee: {fields:[["first_name", "text"], ["last_name", "text"], ["username", "text"], ["phone_number", "text"], ["password" ,"password"], ["email", "email"]], url:ENDPOINTS.REGISTER_LDAP},
-    task: {fields:[["departamento", "list"], ["nombre", "text"], ["implicados", "multiselect", employees], ["descripcion", "text"]], url:ENDPOINTS.TASK},
+    employee: {fields:[["first_name", "text"], ["role", "checkbox" ] ,["last_name", "text"], ["departamento", "hidden", department], ["username", "text"], ["phone_number", "text"], ["password" ,"password"], ["email", "email"]], url:ENDPOINTS.REGISTER_LDAP},
+    task: {fields:[["departamento", "hidden", department], ["nombre", "text"], ["implicados", "multiselect", employees], ["descripcion", "text"]], url:ENDPOINTS.TASK},
     department: {fields:[["nombre", "text"]], url:ENDPOINTS.DEPARTMENT},
     time_span: {fields:[["horario", "text"], ["hora_entrada", "time"], ["hora_salida", "time"]], url:""},
     holiday: {fields:[["day", "date"]], url:""}
@@ -107,9 +107,9 @@ const form_list = {
         <div className="flex flex-col h-8/10 w-2/10 items-center">
           <Departments setDepartment={setDepartment} />
           <div className="h-7/20 flex flex-col justify-between">            
-            <Create_Button onClick={()=> {setActive(true); setFields(form_list.department.fields); setUrl(form_list.department.url)}} content="Crear nuevo departamento" />
-            <Create_Button  onClick={()=> {setActive(true); setFields(form_list.time_span.fields); setUrl(form_list.time_span.url)}} content="Crear nuevo horario" />
-            <Create_Button  onClick={()=> {setActive(true); setFields(form_list.holiday.fields); setUrl(form_list.holiday.url)}} content="Designar festivo" />
+            <Create_Button onClick={()=> {setActiveform('department')}} content="Crear nuevo departamento" />
+            <Create_Button  onClick={()=> {setActiveform('time_span'); setFields(form_list.time_span.fields); setUrl(form_list.time_span.url)}} content="Crear nuevo horario" />
+            <Create_Button  onClick={()=> {setActiveform('holiday'); setFields(form_list.holiday.fields); setUrl(form_list.holiday.url)}} content="Designar festivo" />
           </div>
         </div>
       </div>

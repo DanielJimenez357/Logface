@@ -4,9 +4,9 @@ function List({title, content_list, loading}) {
 
   return (
   <>
-    <div className="bg-white border border-negro1 rounded-lg h-6/10 mb-10">
+    <div className="bg-white border border-negro1 overflow-y-scroll rounded-lg h-6/10 mb-10">
       <p className="bg-gris2 text-white text-center rounded-t-lg">{title}</p>
-      <div className="overflow-scroll">
+      <div className="">
           {!loading && (content_list.map((element, key)=>(
           <List_Component content={element.username ? element.username : element.nombre} />
         )))}

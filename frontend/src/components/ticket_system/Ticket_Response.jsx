@@ -1,6 +1,8 @@
 import User_Info from './User_Info.jsx'
 import { BiReply } from "react-icons/bi"
+
 function Ticket_Response({response_content}) {
+
   return (
   <>
       <div className="flex ">

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "departamentos",
     "entrada",
     "django_filters",
+    "incidencias",
 ]
 
 MIDDLEWARE = [

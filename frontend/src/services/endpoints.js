@@ -4,5 +4,6 @@ export const ENDPOINTS = {
     REGISTER_LDAP: '/api/register/',
     DEPARTMENT: '/api/department/',
     TASK: '/api/task/',
-    EMPLOYEE: '/api/employee'
+    EMPLOYEE: '/api/employee',
+    TICKET: '/api/ticket/'
 }

@@ -20,6 +20,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from usuarios import views as vistas_usuario
 from departamentos import views as views_department
+from incidencias import views as views_incidencias
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -30,6 +31,7 @@ router = DefaultRouter()
 router.register(r"employee", vistas_usuario.UsuarioViewSet)
 router.register(r"task", views_department.TaskViewSet)
 router.register(r"department", views_department.DepartmentViewSet)
+router.register(r"ticket", views_incidencias.IncidenciaViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),

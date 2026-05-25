@@ -4,7 +4,9 @@ from .models import Tarea, Departamento
 
 class TareaSerializer(serializers.ModelSerializer):
     department_name = serializers.ReadOnlyField(source="departamento.nombre")
-    implicated_names = serializers.StringRelatedField(many=True, source="implicados")
+    implicated_names = serializers.StringRelatedField(
+        many=True, source="implicados", read_only=True
+    )
 
     class Meta:
         model = Tarea
