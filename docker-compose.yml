@@ -1,0 +1,64 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: tfg_postgres
+    restart: always
+    environment:
+        - POSTGRES_DB=tfg_db
+        - POSTGRES_USER=usuario_tfg
+        - POSTGRES_PASSWORD=123
+    volumes:
+        - postgres_data:/var/lib/postgresql/data
+    ports:
+        - "5433:5432"
+    healthcheck:
+        test: ["CMD-SHELL", "pg_isready -U usuario_tfg -d tfg_db"]
+        interval: 5s
+        timeout: 5s
+        retries: 5
+  openldap:
+    image: osixia/openldap:1.5.0
+    container_name: tfg_ldap
+    ports:
+      - "389:389"
+      - "636:636"
+    environment:
+      - LDAP_ORGANISATION=${LDAP_ORGANISATION}
+      - LDAP_DOMAIN=${LDAP_DOMAIN}
+      - LDAP_ADMIN_PASSWORD=${LDAP_ADMIN_PASSWORD}
+    volumes:
+      - ./openldap_data:/var/lib/ldap
+      - ./openldap_config:/etc/ldap/slapd.d
+  backend:
+    build: 
+      context: ./backend
+    container_name: tfg_django
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgres://usuario_tfg:123@db:5432/tfg_db
+      - LDAP_URI=ldap://openldap:389
+      - LDAP_BIND_DN=cn=admin,dc=logfacedomain,dc=com
+      - LDAP_BIND_PASSWORD=123
+      - LDAP_SEARCH_BASE=dc=logfacedomain,dc=com
+      - DJANGO_SUPERUSER_PASSWORD=123
+      - DJANGO_SUPERUSER_EMAIL=admin@gmail.com
+      - DJANGO_SUPERUSER_USERNAME=admin
+    depends_on:
+      db:
+        condition: service_healthy
+      openldap:
+        condition: service_started
+
+  frontend:
+    build: 
+      context: ./frontend
+      args:
+        - VITE_API_URL=http://localhost:8000
+    container_name: tfg_react
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+volumes:
+    postgres_data:

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 import os
 import ldap
+import dj_database_url
 from dotenv import load_dotenv
 from django_auth_ldap.config import LDAPSearch
 from pathlib import Path
@@ -28,10 +29,10 @@ load_dotenv()
 SECRET_KEY = "django-insecure-hc2uap9#(uj&*)3w%x_07rhm@z!h1=flq95^o2zbr7gfv-pnf8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = DEBUG = os.getenv('DEBUG', 'True')
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+frontend_url = os.getenv('FRONTEND_URL', 'http://localhost:5173')
 
 # Application definition
 
@@ -87,10 +88,10 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL', 'sqlite:///db.sqlite3'),
+        conn_max_age=600
+    )
 }
 
 
@@ -133,9 +134,8 @@ STATIC_URL = "static/"
 AUTH_USER_MODEL = "usuarios.usuario"
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0:5173",
-    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    frontend_url,
 ]
 
 REST_FRAMEWORK = {
