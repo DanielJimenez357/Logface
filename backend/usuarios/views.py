@@ -19,6 +19,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     serializer_class = UsuarioSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ["departamento"]
+    permission_classes = [IsAuthenticated]
 
 
 # funcion para registrar a usarios desde el frontend en el servidor dlap
