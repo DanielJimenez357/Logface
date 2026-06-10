@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f compose-resuelto.yml
+    kompose.version: 1.34.0 (cbf2835db)
+  labels:
+    io.kompose.service: backend
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: backend
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f compose-resuelto.yml
+        kompose.version: 1.34.0 (cbf2835db)
+      labels:
+        io.kompose.service: backend
+    spec:
+      containers:
+        - env:
+            - name: DATABASE_URL
+              value: postgres://usuario_tfg:123@db:5432/tfg_db
+            - name: DJANGO_SUPERUSER_EMAIL
+              value: admin@gmail.com
+            - name: DJANGO_SUPERUSER_PASSWORD
+              value: "123"
+            - name: DJANGO_SUPERUSER_USERNAME
+              value: admin
+            - name: LDAP_BIND_DN
+              value: cn=admin,dc=logfacedomain,dc=com
+            - name: LDAP_BIND_PASSWORD
+              value: "123"
+            - name: LDAP_SEARCH_BASE
+              value: dc=logfacedomain,dc=com
+            - name: LDAP_URI
+              value: ldap://openldap:389
+            - name: DJANGO_ALLOWED_HOSTS
+              value: "localhost,127.0.0.1,tfg.local,backend"
+          image: danieljimenez357/tfg-backend
+          name: tfg-django
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+      restartPolicy: Always
