@@ -39,8 +39,9 @@ spec:
             - name: LDAP_URI
               value: ldap://openldap:389
             - name: DJANGO_ALLOWED_HOSTS
-              value: "localhost,127.0.0.1,tfg.local,backend"
-          image: danieljimenez357/tfg-backend
+              value: "localhost,127.0.0.1,tfg.local,backend,af04402d99f6a4717a7569aa2fc7f476-68374a68278a74bf.elb.us-east-1.amazonaws.com"
+          image: danieljimenez357/tfg-backend:latest
+          imagePullPolicy: Always
           name: tfg-django
           ports:
             - containerPort: 8000

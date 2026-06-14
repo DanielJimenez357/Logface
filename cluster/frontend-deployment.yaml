@@ -21,7 +21,8 @@ spec:
         io.kompose.service: frontend
     spec:
       containers:
-        - image: danieljimenez357/tfg-frontend:v2
+        - image: danieljimenez357/tfg-frontend:latest
+          imagePullPolicy: Always
           name: tfg-react
           ports:
             - containerPort: 80

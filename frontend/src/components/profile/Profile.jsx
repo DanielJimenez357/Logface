@@ -5,6 +5,7 @@ import Roster_Calculator from './Roster_Calculator.jsx'
 import Graph from './Graph.jsx'
 import { AuthContext } from '../../context/Auth_Context.jsx'
 import {useContext} from 'react'
+import Change_Form from './Change_Form.jsx'
 
 function Profile() {
   const context = useContext(AuthContext)
@@ -27,6 +28,7 @@ function Profile() {
           <Roster_Calculator />
           <Graph />
         </div>
+        <Change_Form visible={true} placeholder="codigo"/>
     </div>
     </>
   )

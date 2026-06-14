@@ -21,7 +21,11 @@ from rest_framework.routers import DefaultRouter
 from usuarios import views as vistas_usuario
 from departamentos import views as views_department
 from incidencias import views as views_incidencias
-from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularSwaggerView,
+    SpectacularRedocView,
+)
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -41,7 +45,15 @@ urlpatterns = [
     path("api/", include(router.urls), name="home"),
     path("api/register/", vistas_usuario.LDAPRegister.as_view(), name="ldap_register"),
     path("api/profile/", vistas_usuario.Profile.as_view(), name="profile"),
-    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
-
+    path(
+        "api/docs/",
+        SpectacularSwaggerView.as_view(url_name="schema"),
+        name="swagger-ui",
+    ),
+    path("api/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
+    path(
+        "api/profile/changepassword",
+        vistas_usuario.ChangePassword.as_view(),
+        name="change_password",
+    ),
 ]

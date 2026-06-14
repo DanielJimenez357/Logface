@@ -5,5 +5,6 @@ export const ENDPOINTS = {
     DEPARTMENT: '/api/department/',
     TASK: '/api/task/',
     EMPLOYEE: '/api/employee',
-    TICKET: '/api/ticket/'
+    TICKET: '/api/ticket/',
+    CHANGE_PASSWORD: '/api/profile/changepassword',
 }

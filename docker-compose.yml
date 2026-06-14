@@ -35,6 +35,8 @@ services:
     container_name: tfg_django
     ports:
       - "8000:8000"
+    env_file:
+      - ./backend/.env
     environment:
       - DATABASE_URL=postgres://usuario_tfg:123@db:5432/tfg_db
       - LDAP_URI=ldap://openldap:389

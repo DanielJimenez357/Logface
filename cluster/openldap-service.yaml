@@ -5,7 +5,7 @@ metadata:
     kompose.cmd: kompose convert -f compose-resuelto.yml
     kompose.version: 1.34.0 (cbf2835db)
   labels:
-    io.kompose.service: openldap
+    app: openldap
   name: openldap
 spec:
   ports:
@@ -16,4 +16,4 @@ spec:
       port: 636
       targetPort: 636
   selector:
-    io.kompose.service: openldap
+    app: openldap

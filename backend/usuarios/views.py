@@ -9,7 +9,12 @@ from backend.services.ldap_service import ldap_register
 from .models import Usuario
 from departamentos.models import Departamento
 from .serializers import UserProfile, UsuarioSerializer
+from django.core.mail import send_mail
 import os, json, requests
+from .models import VerificationCode
+import random
+from django.utils import timezone
+from datetime import timedelta
 
 # Create your views here.
 
@@ -78,3 +83,61 @@ class Profile(APIView):
         serializer = UserProfile(user)
         print(serializer.data)
         return Response(serializer.data)
+
+
+class ChangePassword(APIView):
+    def get(self, request):
+        user = request.user
+        VerificationCode.objects.filter(user=user, used=False).update(used=True)
+        code = str(random.randint(100000, 999999))
+
+        VerificationCode.objects.create(
+            user=user, code=code, expires_at=timezone.now() + timedelta(minutes=10)
+        )
+
+        send_mail(
+            subject="Tu codigo de verificacion",
+            message=f"Tu código es: {code}",
+            from_email="noreply@tuapp.com",
+            recipient_list=[user.email],
+        )
+
+        return Response(
+            {"message": "Código enviado al correo"}, status=status.HTTP_200_OK
+        )
+
+    def post(self, request):
+        user = request.user
+        code_input = request.data.get("code")
+        new_password = request.data.get("new_password")
+        if not code_input or not new_password:
+            return Response(
+                {"error": "Se requiere codigo y nueva contraseña"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        try:
+            record = VerificationCode.objects.filter(user=user, used=False).latest(
+                "created_at"
+            )
+        except VerificationCode.DoesNotExist:
+            return Response(
+                {"error": "No hay ningún código activo"},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+        if not record.is_valid():
+            return Response(
+                {"error": "El código ha expirado"}, status=status.HTTP_400_BAD_REQUEST
+            )
+
+        if record.code != code_input:
+            return Response(
+                {"error": "Código incorrecto"}, status=status.HTTP_400_BAD_REQUEST
+            )
+        record.used = True
+        record.save()
+        user.set_password(new_password)
+        user.save()
+
+        return Response(
+            {"message": "Contraseña cambiada correctamente"}, status=status.HTTP_200_OK
+        )
