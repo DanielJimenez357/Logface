@@ -27,7 +27,6 @@ jobs:
     name: Reconstruir imagenes
     needs: test
     runs-on: ubuntu-latest
-    environment: Secrets
     steps:
       - uses: actions/checkout@v4
       - name: Login DockerHub
