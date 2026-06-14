@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: tfg-ingress
+  name: tfg-produccion
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
@@ -28,4 +29,4 @@ spec:
           service:
             name: frontend
             port:
-              number: 80
+              number: 3000
