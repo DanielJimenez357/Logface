@@ -29,7 +29,6 @@ jobs:
           pip install -r requirements.txt
           python manage.py test
 
-  build-and-push:
     name: Reconstruir imagenes
     needs: test 
     runs-on: ubuntu-latest
