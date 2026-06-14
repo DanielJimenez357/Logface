@@ -67,6 +67,11 @@ jobs:
         run: aws eks update-kubeconfig --region us-east-1 --name tfg-cluster
       - name: Instalar Terraform
         uses: hashicorp/setup-terraform@v2
+      - name: Limpiar recursos anteriores
+        run: |
+          helm uninstall ingress-nginx -n ingress-nginx || true
+          kubectl delete namespace tfg-produccion || true
+          kubectl delete namespace ingress-nginx || true
       - name: Aplicar Terraform
         run: |
           cd terraform
