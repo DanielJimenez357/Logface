@@ -72,10 +72,10 @@ jobs:
           helm uninstall ingress-nginx -n ingress-nginx || true
           kubectl delete namespace tfg-produccion || true
           kubectl delete namespace ingress-nginx || true
-      - name: Limpiar ingress huérfanos
-        run: |
           kubectl delete ingress tfg-ingress -n default || true
           kubectl delete secret tfg-tls-secret -n default || true
+          kubectl delete ingress --all -n default || true
+          kubectl delete ingress --all -n tfg-produccion || true
       - name: Aplicar Terraform
         run: |
           cd terraform

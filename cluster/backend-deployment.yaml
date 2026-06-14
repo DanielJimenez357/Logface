@@ -40,6 +40,8 @@ spec:
               value: ldap://openldap:389
             - name: DJANGO_ALLOWED_HOSTS
               value: "localhost,127.0.0.1,tfg.local,backend,logface.work.gd"
+            - name: FRONTEND_URL
+              value: "https://logface.work.gd"
           image: danieljimenez357/tfg-backend:latest
           imagePullPolicy: Always
           name: tfg-django
