@@ -12,7 +12,7 @@ spec:
     - www.logface.work.gd
     secretName: tfg-tls-secret
   rules:
-  - host: logface.work.gd
+  - host: www.logface.work.gd
     http:
       paths:
       - path: /api
