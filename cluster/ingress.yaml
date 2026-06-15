@@ -9,7 +9,7 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - logface.work.gd
+    - www.logface.work.gd
     secretName: tfg-tls-secret
   rules:
   - host: logface.work.gd
