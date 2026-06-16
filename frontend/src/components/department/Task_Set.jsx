@@ -85,8 +85,8 @@ function Task_Set({title}) {
   <>
     <div className="w-full h-full content-center">
         <Task_Details description={detailsDescription} implicated={detailsImplicated} show={showDetails} onClose={()=> setShowDetails(false)} />
-      <p className="absolute top-0 right-30 bg-white border border-negro1 rounded-b-lg p-2 pl-6 pr-6">{user.department_name}</p>
-        <div className="w-full h-17/20 flex flex-row justify-around">
+      <p className="absolute top-0 lg:right-30 bg-white border border-negro1 rounded-b-lg p-2 pl-6 pr-6">{user.department_name}</p>
+        <div className="w-full justify-center items-center h-17/20 flex flex-col lg:flex-row lg:justify-around">
       <DragDropProvider onDragEnd={handleDragEnd}>
         <Task_Activity id="pending" setDetailsImplicated={setDetailsImplicated} setDetailsDescription={setDetailsDescription} task={pendingTask} title="Pendientes" onTaskClick={handleOpenPanel}/>
         <Task_Activity id="active" setDetailsImplicated={setDetailsImplicated} setDetailsDescription={setDetailsDescription} task={activeTask} title="Activos" onTaskClick={handleOpenPanel}/>

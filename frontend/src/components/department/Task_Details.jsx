@@ -23,11 +23,7 @@ function Task_Details({description, implicated, show, onClose}) {
           <p>Descripcion:</p>
           <p className="border-negro1 border bg-gris1 rounded-lg" >{description}</p>
         </div>
-        <div  className="pt-2 pb-2">
-          <p>Fecha limite estimada:  </p>
-          <p className="w-full bg-rojo1 text-white border border-negro1 rounded-2xl text-center p-0 text-xl hover:brightness-125 hover:cursor-default"> 19/06/26 </p>
-        </div>
-    </div>
+            </div>
     </>
   )
 }

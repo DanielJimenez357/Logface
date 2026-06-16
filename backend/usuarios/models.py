@@ -4,7 +4,7 @@ from django.utils import timezone
 
 
 class Usuario(AbstractUser):
-    foto = models.CharField(blank=True, max_length=50)
+    foto = models.FileField(upload_to="perfil/", null=True, blank=True)
     role = models.CharField(default="manager", max_length=50)
     departamento = models.ForeignKey(
         "departamentos.Departamento",

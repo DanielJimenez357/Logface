@@ -42,6 +42,10 @@ spec:
               value: "localhost,127.0.0.1,tfg.local,backend,www.logface.work.gd"
             - name: FRONTEND_URL
               value: "https://www.logface.work.gd"
+            - name: GEMINI_API_KEY
+              value: "AQ.Ab8RN6IT6yeZqu5hJBciWvl_u6IBdWxenlxbEf88b7ZBpVplkg"
+            - name: RESEND_API_KEY
+              value: re_Jac48gRX_GqerSsvs5ee52kgapQiwuckz
           image: danieljimenez357/tfg-backend:latest
           imagePullPolicy: Always
           name: tfg-django

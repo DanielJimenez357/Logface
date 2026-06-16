@@ -1,11 +1,27 @@
-function Create_Button({onClick, active, content}) {
-  return (
-  <>
-      <div onClick={onClick} className=" bg-gris2 rounded-3xl text-white border border-negro1 p-4 ps-8 pe-8 text-center hover:cursor-pointer hover:brightness-125 active:brightness-75">
-        <p >{content}</p>
-      </div>
+import { motion } from 'framer-motion'
 
-    </>
+function Create_Button({ onClick, active, content }) {
+  return (
+    <motion.button
+      onClick={onClick}
+      whileTap={{ scale: 0.96 }}
+      whileHover={{ scale: 1.02 }}
+      className={`
+        m-1
+        relative overflow-hidden
+        bg-gris2 text-white
+        rounded-xl
+        px-6 py-2.5
+        text-sm font-medium tracking-wide
+        cursor-pointer
+        transition-all duration-200
+        hover:brightness-110
+        active:brightness-75
+        ${active ? 'ring-2 ring-white ring-offset-2 ring-offset-gris2' : ''}
+      `}
+    >
+      {content}
+    </motion.button>
   )
 }
 

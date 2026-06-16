@@ -43,3 +43,36 @@ def ldap_register(username, password, email, name, last_name):
     except Exception as e:
         print(e)
         return False
+
+
+def change_password_ldap(username, nueva_password):
+    server_uri = os.getenv("LDAP_URI")
+    admin_dn = os.getenv("LDAP_BIND_DN")
+    admin_password = os.getenv("LDAP_BIND_PASSWORD")
+    search_base = os.getenv("LDAP_SEARCH_BASE")
+
+    user_dn = f"uid={username},{search_base}"
+
+    try:
+        server = Server(server_uri, get_info=ALL)
+        connection = Connection(
+            server,
+            user=admin_dn,
+            password=admin_password,
+            client_strategy=SAFE_SYNC,
+            auto_bind=True,
+        )
+        succes = connection.extend.standard.modify_password(
+            user=user_dn, new_password=nueva_password
+        )
+
+        if succes:
+            print("Contraseña cambiada correctamente")
+            return True
+        else:
+            print("Fallo en el cambio de contraseña")
+            return False
+
+    except Exception as e:
+        print(f"Error al conectar con ldap: {e}")
+        return False

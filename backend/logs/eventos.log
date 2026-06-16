@@ -1,0 +1,11 @@
+[2026-06-16 12:00:13] INFO: TICKET_CREADO | El empleado 'eva' (ID: 3) creó la incidencia ID: 5 - 'No va la luz'
+[2026-06-16 12:05:05] INFO: TICKET_RESUELTO | El manager 'dani' (ID: 2) resolvió la incidencia ID: 5 con la respuesta ID: 3
+[2026-06-16 17:05:45] INFO: TICKET_CREADO | El empleado 'dani' (ID: 2) creó la incidencia ID: 6 - 'Se ha caido el cafe'
+[2026-06-16 17:06:21] INFO: TICKET_CREADO | El empleado 'dani' (ID: 2) creó la incidencia ID: 7 - 'La base de datos ha sido hackeada'
+[2026-06-16 17:12:59] INFO: TICKET_CREADO | User 'dani' (ID: 2) created ticket ID: 8 - 'Urgente' [AI Priority: low]
+[2026-06-16 17:15:40] INFO: TICKET_CREADO | User 'dani' (ID: 2) created ticket ID: 9 - 'Urgente' [AI Priority: low]
+[2026-06-16 17:16:21] INFO: TICKET_CREADO | User 'dani' (ID: 2) created ticket ID: 10 - 'Hackeo base de datos' [AI Priority: high]
+[2026-06-16 17:19:02] INFO: TICKET_CREADO | User 'dani' (ID: 2) created ticket ID: 11 - 'Han robado en la oficina' [AI Priority: low]
+[2026-06-16 17:19:37] INFO: TICKET_CREADO | User 'dani' (ID: 2) created ticket ID: 12 - 'Han hackeado la base de datos' [AI Priority: low]
+[2026-06-16 17:21:47] INFO: TICKET_CREADO | User 'dani' (ID: 2) created ticket ID: 13 - 'Alta prioridad' [AI Priority: low]
+[2026-06-16 17:25:16] INFO: TICKET_CREADO | User 'dani' (ID: 2) created ticket ID: 14 - 'Nos han robado' [AI Priority: alta]

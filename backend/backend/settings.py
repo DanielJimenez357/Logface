@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-#2
+
+# 2
 import os
 import ldap
 import dj_database_url
@@ -19,7 +20,9 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+LOG_DIR = os.path.join(BASE_DIR, "logs")
+if not os.path.exists(LOG_DIR):
+    os.makedirs(LOG_DIR)
 load_dotenv()
 
 # Quick-start development settings - unsuitable for production
@@ -28,10 +31,10 @@ load_dotenv()
 SECRET_KEY = "django-insecure-hc2uap9#(uj&*)3w%x_07rhm@z!h1=flq95^o2zbr7gfv-pnf8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = DEBUG = os.getenv('DEBUG', 'True')
+DEBUG = DEBUG = os.getenv("DEBUG", "True")
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-frontend_url = os.getenv('FRONTEND_URL', 'http://localhost:5173')
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
 
 # Application definition
 
@@ -88,9 +91,8 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', 'sqlite:///db.sqlite3'),
-        conn_max_age=600
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL", "sqlite:///db.sqlite3"), conn_max_age=600
     )
 }
 
@@ -147,10 +149,10 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Logface',
-    'DESCRIPTION': 'Documentacion',
-    'VERSION': '1.0.0',
-    'SERVE_INCLUDE_SCHEMA': False,
+    "TITLE": "Logface",
+    "DESCRIPTION": "Documentacion",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }
 
 AUTHENTICATION_BACKENDS = [
@@ -165,3 +167,37 @@ AUTH_LDAP_BIND_PASSWORD = os.getenv("LDAP_BIND_PASSWORD")
 AUTH_LDAP_USER_SEARCH = LDAPSearch(
     os.getenv("LDAP_SEARCH_BASE"), ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
 )
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "simple": {
+            "format": "[%(asctime)s] %(levelname)s: %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+        "file_events": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(LOG_DIR, "eventos.log"),
+            "formatter": "simple",
+        },
+    },
+    "loggers": {
+        "logface_events": {
+            "handlers": ["console", "file_events"],
+            "level": "INFO",
+            "propagate": True,
+        },
+    },
+}
+
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

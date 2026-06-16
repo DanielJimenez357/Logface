@@ -7,4 +7,6 @@ export const ENDPOINTS = {
     EMPLOYEE: '/api/employee',
     TICKET: '/api/ticket/',
     CHANGE_PASSWORD: '/api/profile/changepassword',
+    EXPORT_EMPLOYEES: '/api/exportemployee/',
+    EXPORT_TICKETS_PDF: '/api/exportpdf/',
 }

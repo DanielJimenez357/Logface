@@ -21,8 +21,14 @@ function Link_Header({link_name, route, onClick}) {
       whileTap={{ scale: .95}}
         className="w-full"
       >
-        <NavLink to={`/${route}`} className={linkStyle} >
-          <p className="bg-rojo2 hover:cursor-pointer rounded-xl p-3  w-full" onClick={onClick}>{link_name}</p>
+        <NavLink to={`/${route}`} className={({ isActive }) =>
+            `transition-all hover:cursor-pointer rounded-xl p-3 w-full block ${
+              isActive
+                ? "text-white bg-rojo2 hover:bg-rojo1"
+                : "text-negro1 bg-white hover:bg-gris2"
+            }`
+          }onClick={onClick} >
+          {link_name}
         </NavLink>
       </motion.div>
     </>

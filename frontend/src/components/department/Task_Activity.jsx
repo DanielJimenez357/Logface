@@ -8,7 +8,7 @@ function Task_Activity({id, title, onTaskClick, task, setDetailsImplicated, setD
 
   return (
   <>
-    <div ref={ref} className="border border-negro1 rounded-b-md rounded-t-lg bg-white overflow-hidden w-9/30 shadow shadow-gris2">
+    <div ref={ref} className="border border-negro1 rounded-b-md rounded-t-lg bg-white overflow-hidden w-2/3 lg:w-9/30 shadow shadow-gris2">
       <p className="bg-gris2 text-white border-b border-negro1 text-2xl text-center">{title}</p>
         <div>
           {task.map((item, index) => (

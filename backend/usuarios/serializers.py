@@ -23,4 +23,5 @@ class UserProfile(serializers.ModelSerializer):
             "role",
             "departamento",
             "department_name",
+            "foto",
         ]

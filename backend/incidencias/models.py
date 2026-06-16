@@ -11,9 +11,11 @@ class incidencias(models.Model):
     )
     asunto = models.CharField(max_length=50)
     contenido = models.CharField(max_length=500)
+    resuelto = models.BooleanField(default=False)
+    prioridad = models.CharField(max_length=10, default="baja")
 
     class Meta:
-        ordering = ["fecha_creacion"]
+        ordering = ["-fecha_creacion"]
 
 
 class respuesta(models.Model):
@@ -27,4 +29,4 @@ class respuesta(models.Model):
     contenido = models.CharField(max_length=500)
 
     class Meta:
-        ordering = ["fecha_creacion"]
+        ordering = ["-fecha_creacion"]
