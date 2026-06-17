@@ -16,7 +16,7 @@ const AuthProvider = ({children}) => {
     const token = localStorage.getItem('access_token')
     if (token) {
       try{
-        const response = await apiDjango.get('/api/profile')
+        const response = await apiDjango.get('/api/profile/')
         setUser(response.data)
       }
       catch (error){
