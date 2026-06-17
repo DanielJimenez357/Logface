@@ -33,7 +33,10 @@ SECRET_KEY = "django-insecure-hc2uap9#(uj&*)3w%x_07rhm@z!h1=flq95^o2zbr7gfv-pnf8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = DEBUG = os.getenv("DEBUG", "True")
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+ALLOWED_HOSTS = os.getenv(
+    "DJANGO_ALLOWED_HOSTS",
+    "localhost,127.0.0.1",
+).split(",")
 frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
 
 # Application definition
@@ -137,7 +140,9 @@ AUTH_USER_MODEL = "usuarios.usuario"
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    frontend_url,
+    "http://localhost:5173",
+    os.getenv("FRONTEND_URL", "http://localhost:5173"),
+    "https://www.logface.work.gd",
 ]
 
 REST_FRAMEWORK = {
