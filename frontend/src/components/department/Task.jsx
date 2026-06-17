@@ -1,21 +1,15 @@
 import { useDraggable } from '@dnd-kit/react'
-import { CSS } from '@dnd-kit/utilities'
 
 function Task({ id, content, description, onClick, setDetailsDescription, setDetailsImplicated, implicated }) {
 
-  const { ref, transform, listeners, attributes } = useDraggable({
+  const { ref, listeners, attributes } = useDraggable({
     id,
   })
-
-  const style = {
-    transform: transform ? CSS.Translate.toString(transform) : undefined,
-  }
 
   return (
     <div 
       ref={ref} 
-      style={style}              
-      {...listeners}            
+      {...listeners}             
       {...attributes}            
       className="p-3 m-2 bg-white rounded-lg border border-negro1 hover:border-rojo1 flex justify-between items-center cursor-grab active:cursor-grabbing shadow-sm"
     >
