@@ -49,7 +49,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/tfg-frontend:latest
           build-args: |
-            VITE_API_URL=https://logface.work.gd
+            VITE_API_URL=https://www.logface.work.gd
   deploy:
     name: Despliegue cluster
     needs: build-and-push
